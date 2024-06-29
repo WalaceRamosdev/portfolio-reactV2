@@ -1,8 +1,44 @@
 import ButtonA from '../elements/ButtonA'
 import style from './Presentation.module.css'
+import { useEffect, useState } from 'react'
 
 
 function Presentation () {
+
+    const [text, setText] = useState('')
+    const textRotate = [' sou Desenvolvedor Full-Stack', ' sou Desenvolvedor Freelancer' ]
+    const [loop, setLoop] = useState(0)
+    const [textDelete, setTextDelete] = useState(false)
+    const period = 100
+    const [delta, setDelta] = useState(100)
+
+    useEffect(() => {
+        let ticker  = setInterval(() => {
+            toType()
+        }, delta)
+
+        return() => {clearInterval(ticker)}
+
+    }, [text])
+
+    const toType = () => {
+        let i = loop % textRotate.length
+        let fullText = textRotate[i]
+        let updatedText = textDelete ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1)
+
+        setText(updatedText)
+
+        if (!textDelete && updatedText === fullText) {
+            setTextDelete(true);
+            setDelta(period);
+        }
+        else if (textDelete && updatedText === '') {
+            setTextDelete(false);
+            setDelta(period);
+            setLoop(loop + 1);
+        }
+    }
+
     return (
         <div className = {style.presentation} id="presentation">
 
@@ -13,7 +49,7 @@ function Presentation () {
             </h3>
 
             <h1>
-                Olá! Me chamo Walace Ramos
+                Olá! Me chamo Walace Ramos e {text}
             </h1>
 
             <p>
