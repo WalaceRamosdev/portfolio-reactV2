@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react'
 
 function Presentation () {
 
-    const [text, setText] = useState('')
-    const toRotate = [' sou Desenvolvedor Full-Stack', ' sou Desenvolvedor Freelancer' ]
-    const [loop, setLoop] = useState(0)
-    const [isDeleting, setIsDeleting] = useState(false)
-    const period = 100
-    const [delta, setDelta] = useState(100)
+    const [text, setText] = useState('');
+    const toRotate = [' Desenvolvedor Full-Stack', ' Desenvolvedor Freelancer' ];
+    const [loop, setLoop] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const period = 100;
+    const [delta, setDelta] = useState(100);
 
     useEffect(() => {
         let ticker  = setInterval(() => {
@@ -22,11 +22,11 @@ function Presentation () {
     }, [text])
 
     const toType = () => {
-        let i = loop % toRotate.length
-        let fullText = toRotate[i]
-        let updatedText = isDeleting ? fullText.substring(0,text.length-1) : fullText.substring(0,text.length+1)
+        let i = loop % toRotate.length;
+        let fullText = toRotate[i];
+        let updatedText = isDeleting ? fullText.substring(0,text.length-1) : fullText.substring(0,text.length+1);
 
-        setText(updatedText)
+        setText(updatedText);
 
         if (!isDeleting && updatedText === fullText) {
             setIsDeleting(true);
@@ -48,7 +48,8 @@ function Presentation () {
                 </strong>
             </h3>
 
-            <h1> Olá! Me chamo Walace Ramos e {text}</h1>
+            <h1>Olá! Sou Walace Ramos, e sou <span>{text}</span></h1>
+            
 
             <p>
                 Com uma longa experiência no desenvolvimento de websites e aplicações web, estou aqui <br/>
