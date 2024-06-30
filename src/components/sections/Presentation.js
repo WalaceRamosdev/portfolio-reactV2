@@ -1,14 +1,14 @@
-import ButtonA from '../elements/ButtonA'
 import style from './Presentation.module.css'
+import ButtonA from '../elements/ButtonA'
 import { useEffect, useState } from 'react'
 
 
 function Presentation () {
 
     const [text, setText] = useState('')
-    const textRotate = [' sou Desenvolvedor Full-Stack', ' sou Desenvolvedor Freelancer' ]
+    const toRotate = [' sou Desenvolvedor Full-Stack', ' sou Desenvolvedor Freelancer' ]
     const [loop, setLoop] = useState(0)
-    const [textDelete, setTextDelete] = useState(false)
+    const [isDeleting, setIsDeleting] = useState(false)
     const period = 100
     const [delta, setDelta] = useState(100)
 
@@ -22,20 +22,20 @@ function Presentation () {
     }, [text])
 
     const toType = () => {
-        let i = loop % textRotate.length
-        let fullText = textRotate[i]
-        let updatedText = textDelete ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1)
+        let i = loop % toRotate.length
+        let fullText = toRotate[i]
+        let updatedText = isDeleting ? fullText.substring(0,text.length-1) : fullText.substring(0,text.length+1)
 
         setText(updatedText)
 
-        if (!textDelete && updatedText === fullText) {
-            setTextDelete(true);
+        if (!isDeleting && updatedText === fullText) {
+            setIsDeleting(true);
             setDelta(period);
         }
-        else if (textDelete && updatedText === '') {
-            setTextDelete(false);
+        else if (isDeleting && updatedText === '') {
+            setIsDeleting(false);
             setDelta(period);
-            setLoop(loop + 1);
+            setLoop(loop+1);
         }
     }
 
@@ -48,9 +48,7 @@ function Presentation () {
                 </strong>
             </h3>
 
-            <h1>
-                Olá! Me chamo Walace Ramos e {text}
-            </h1>
+            <h1> Olá! Me chamo Walace Ramos e {text}</h1>
 
             <p>
                 Com uma longa experiência no desenvolvimento de websites e aplicações web, estou aqui <br/>
