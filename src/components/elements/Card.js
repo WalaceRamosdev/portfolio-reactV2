@@ -15,6 +15,7 @@ function Card ({img, title, tech, description, repo, site}) {
     }
 
     return (
+        
         <div className={style.card} onMouseLeave={InfoOff}>
 
             <a onMouseEnter={InfoOn} href={site}
