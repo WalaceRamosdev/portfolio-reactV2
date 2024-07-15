@@ -18,11 +18,11 @@ function Skills () {
             </p>
 
             <div>
-                <img src={javascript}/>
                 <img src={html}/>
-                <img src={css}/>
+                <img src={javascript}/>
                 <img src={react}/>
                 <img src={typescript}/>
+                <img src={css}/>
             </div>
 
         </div>
